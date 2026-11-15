@@ -1462,8 +1462,9 @@ $('resetMarks').addEventListener('click', () => {
   state.copied.clear(); syncStatus();
 });
 $('clearAll').addEventListener('click', () => {
-  if (!confirm('불러온 파일과 복사 표시를 모두 비울까요?')) return;
+  if (!confirm('불러온 파일, 복사 표시, 작업 요청을 모두 비울까요?')) return;
   state.files = []; state.folded.clear(); state.notices = [];
+  state.task = ''; taskBox.querySelector('textarea').value = '';                              // 이전 파일에 쓴 요청이 새 작업에 붙지 않게 한다
   clearPlan(); renderAll(); updateLimitNote();
 });
 $('noticeClose').addEventListener('click', () => { state.notices = []; renderNotices(); });
